@@ -377,20 +377,11 @@ Every engine failure is wrapped in `*StoreError{Op, Key, Err}` (unwraps via `err
 #
 # The module ships as `bedrock`. Clone/copy this repository into your
 # project (or a vendor dir) and wire it with a replace directive:
-go mod init example.com/myapp
-go mod edit -replace bedrock=./bedrock
-go mod tidy
-#
-# …or host it under your VCS path and simply:
-#   go get github.com/yourorg/bedrock
-#
-# Direct dependencies (pulled automatically):
-#   github.com/cockroachdb/pebble v1.1.5
-#   go.uber.org/zap               v1.28.0
+git clone github.com/Skryldev/bedrock
 ```
 
 ```go
-import "bedrock"
+import "github.com/Skryldev/bedrock"
 ```
 
 ### 60-Second Tour
@@ -405,7 +396,7 @@ import (
         "log"
         "time"
 
-        "bedrock"
+        "github.com/Skryldev/bedrock"
 )
 
 func main() {
@@ -457,10 +448,10 @@ func main() {
 }
 ```
 
-A complete lifecycle tour (open → CRUD → batch → scan → metrics → checkpoint → graceful close) lives in [`cmd/example`](cmd/example/main.go):
+A complete lifecycle tour (open → CRUD → batch → scan → metrics → checkpoint → graceful close) lives in [`cmd/server`](cmd/server/main.go):
 
 ```bash
-go run ./cmd/example
+go run ./cmd/server
 ```
 
 ### Configuration
@@ -485,11 +476,11 @@ store, err := bedrock.Open(
 **Environment variables** (12-factor style) — compose with options; **options win**:
 
 ```bash
-export bedrock_DATA_DIR=/var/lib/myapp/kv
-export bedrock_CACHE_MB=64
-export bedrock_SYNC_WRITES=true
-export bedrock_HOTCACHE_MB=64
-export bedrock_HOTCACHE_TTL_MS=300000
+export BEDROCK_DATA_DIR=/var/lib/myapp/kv
+export BEDROCK_CACHE_MB=64
+export BEDROCK_SYNC_WRITES=true
+export BEDROCK_HOTCACHE_MB=64
+export BEDROCK_HOTCACHE_TTL_MS=300000
 ```
 
 ```go
@@ -715,7 +706,7 @@ BenchmarkMixedWorkload/95_5_hotcache  836 ns/op     1.20 M ops/s    25 B/op   1 
 | [docs/performance.md](docs/performance.md) | Methodology, results, targets-vs-measured, techniques, tuning guide |
 | [docs/deployment.md](docs/deployment.md) | Filesystem layout, Kubernetes, backups, monitoring & alerting |
 | [docs/testing.md](docs/testing.md) | Test suites, coverage, fuzzing, race detection |
-| [`cmd/example`](cmd/example/main.go) | Runnable end-to-end lifecycle demo |
+| [`cmd/server`](cmd/server/main.go) | Runnable end-to-end lifecycle demo |
 
 ## Requirements
 
