@@ -1,0 +1,13 @@
+PHASE sequential_get
+  get: n=100000 p50=1.088µs p95=1.472µs p99=5.376µs p99.9=27.648µs max=239.414µs
+PHASE random_get
+  get: n=100000 p50=1.6µs p95=3.2µs p99=6.912µs p99.9=23.552µs max=185.08µs
+PHASE sync_set
+  set: n=20000 p50=1.984µs p95=4.352µs p99=7.936µs p99.9=23.552µs max=1.21771ms
+PHASE batch_set_100
+  batch: n=1020 p50=94.208µs p95=172.032µs p99=950.272µs p99.9=4.456448ms max=7.873164ms
+PHASE mixed_95_5_hotcache
+  get: n=190022 p50=168ns p95=368ns p99=608ns p99.9=3.968µs max=15.655149ms
+  set: n=9978 p50=4.352µs p95=8.704µs p99=13.824µs p99.9=29.696µs max=1.02457ms
+--- PASS: TestLatencyProfile (0.94s)
+PASS

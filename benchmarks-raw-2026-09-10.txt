@@ -1,0 +1,27 @@
+goos: linux
+goarch: amd64
+pkg: bedrock/benchmarks
+cpu: Intel(R) Xeon(R) Processor
+BenchmarkGet/miss_no_cache-2    	  628389	      3063 ns/op	         0.3265 Mops/s	     192 B/op	       3 allocs/op
+BenchmarkGet/hit_hotcache-2     	 1713357	       732.8 ns/op	         1.365 Mops/s	      16 B/op	       1 allocs/op
+BenchmarkGetSequential-2        	  649921	      1564 ns/op	     192 B/op	       3 allocs/op
+BenchmarkGetRandom-2            	  567145	      2107 ns/op	     192 B/op	       3 allocs/op
+BenchmarkGetParallelRandom-2    	  499561	      2934 ns/op	     192 B/op	       3 allocs/op
+BenchmarkSet/nosync-2           	  921984	      1293 ns/op	      23 B/op	       1 allocs/op
+BenchmarkSet/sync-2             	  339572	      3658 ns/op	      22 B/op	       1 allocs/op
+BenchmarkSetParallel-2          	  892274	      1471 ns/op	      28 B/op	       1 allocs/op
+BenchmarkDelete-2               	 1202000	      1045 ns/op	      17 B/op	       1 allocs/op
+BenchmarkBatchSet/size_10-2     	  339514	      6607 ns/op	   1513529 ops/s	    2219 B/op	      12 allocs/op
+BenchmarkBatchSet/size_100-2    	   23317	     57575 ns/op	   1736868 ops/s	   21986 B/op	     102 allocs/op
+BenchmarkBatchSet/size_1000-2   	    3072	    543164 ns/op	   1841066 ops/s	  215981 B/op	    1006 allocs/op
+BenchmarkScan/keys_10-2         	  641764	      1990 ns/op	   5026100 keys/s	     136 B/op	       3 allocs/op
+BenchmarkScan/keys_1000-2       	   19438	     61217 ns/op	  16335429 keys/s	     136 B/op	       3 allocs/op
+BenchmarkScan/keys_1000_prefetch-2         	   10000	    114751 ns/op	   8714547 keys/s	   49299 B/op	     516 allocs/op
+BenchmarkMixedWorkload/read_heavy_95_5-2   	  620817	      2303 ns/op	    434134 ops/s	     180 B/op	       2 allocs/op
+BenchmarkMixedWorkload/read_heavy_95_5_hotcache-2         	 1677476	       836.2 ns/op	   1195945 ops/s	      25 B/op	       1 allocs/op
+BenchmarkMixedWorkload/balanced_50_50-2                   	  713996	      1939 ns/op	    515610 ops/s	     114 B/op	       2 allocs/op
+BenchmarkBaselineRWMutexMap-2                             	 7657320	       159.3 ns/op	       8 B/op	       0 allocs/op
+BenchmarkRawPebbleGet-2                                   	 2143057	       583.0 ns/op	      16 B/op	       1 allocs/op
+BenchmarkRawPebbleSet-2                                   	  464088	      3181 ns/op	       4 B/op	       0 allocs/op
+PASS
+ok  	bedrock/benchmarks	41.122s
